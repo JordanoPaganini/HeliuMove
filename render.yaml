@@ -1,12 +1,14 @@
 databases:
   - name: heliumove-database
     plan: free
+    region: virginia
     databaseName: heliumove
     user: internal
 
 services:
   - type: web
     plan: free
+    region: virginia
     name: heliumove
     runtime: python
     buildCommand: "./build.sh"
