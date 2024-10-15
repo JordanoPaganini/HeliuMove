@@ -11,6 +11,8 @@ def to_login(request):
 
 def login(request):
     if request.method == 'GET':
+        if request.user.is_authenticated:
+            return redirect(reverse('plataforma'))
         return render(request, 'login.html')
     elif request.method == 'POST':
         username = request.POST.get("username")
