@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'users/css/plataforma.css' %}">
+    <script src="{% static 'users/js/plataforma.js' %}" defer></script>
+{% endblock head %}
+    
+{% block body %}
+<div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name" style="cursor: default;">Heliumove</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+        <li>
+            <a href="{% url 'plataforma' %}">
+                <i class='bx bx-sun'></i>
+                <span class="links_name">Sistemas</span>
+            </a>
+            <span class="tooltip">Sistemas</span>
+        </li>
+        {% if dados %}
+            <li style="cursor: pointer;">
+                <a onclick="exportar()">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Exportar dados</span>
+                </a>
+                <span class="tooltip">Exportar dados</span>
+            </li>
+        {% endif %}
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class='bx bx-user' ></i>
+                <span class="links_name">Sair</span>
+            </a>
+            <span class="tooltip">Logout</span>
+        </li>
+    </ul>
+</div>
+  
+<section class="home-section" style="cursor: default;">
+    <br>
+    <div class="titleDiv">
+        <h2>Dados do sistema</h2>
+        <p></p>
+    </div>
+    <br>
+    <div class="titleDiv">
+        <div class="row">
+            <div class="col-sm">
+                <strong>Sitema:</strong> {{nome}}
+            </div>
+            <div class="col-xl">
+                <strong>Horário da última amostra:</strong> 
+                {% if dados %}
+                    {{dados.0.datatime|date:"d/m/Y"}} às {{dados.0.datatime|date:"H:i:s"}}
+                {% else %}
+                    <i>Sem amostras</i>
+                {% endif %}
+            </div>
+            <div class="col-sm">
+                <strong>Status:</strong> ✅ Executed
+            </div>
+        </div>
+    </div>
+    <br>
+    {% if dados %}
+        <div class="distanciamento"><!--- CORONAVIRUS --->
+            <hr style="border: none; border-top: 0.5px solid rgb(102, 22, 22); width: 100%;">
+            <table class="table table-borderless table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Horário</th>
+                        <th scope="col">Temperatura</th>
+                        <th scope="col">Tensão</th>
+                        <th scope="col">Corrente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dado in dados %}
+                        <tr>
+                            <td colspan="0">{{ dado.datatime|date:"d/m/Y" }}</td>
+                            <td>{{ dado.datatime|date:"H:i:s" }}</td>
+                            <td>{{dado.temp}} ºC</td>
+                            <td>{{dado.voltage}} V</td>
+                            <td>{{dado.current}} A</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <span></span>
+                {% if dados.has_previous %}
+                    <p>|</p>
+                    <a href="?page=1">&laquo; Primeira página</a>
+                    <p>|</p>
+                    <a href="?page={{ dados.previous_page_number }}">Página Anterior</a>
+                    <p>|</p>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ dados.number }} de {{ dados.paginator.num_pages }}
+                </span>
+
+                {% if dados.has_next %}
+                    <p>|</p>
+                    <a href="?page={{ dados.next_page_number }}">Próxima página</a>
+                    <p>|</p>
+                    <a href="?page={{ dados.paginator.num_pages }}">Última página &raquo;</a>
+                    <p>|</p>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    {% endif %}
+    <br>
+    <br>
+</section>
+{% endblock body %}

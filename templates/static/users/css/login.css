@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Kanit', sans-serif;
+    box-sizing: border-box;
+}
+
+#main-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ecddcf;
+}
+
+.div-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+}
+
+.card-login {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 35px;
+    background-color: #dadada;
+    border-radius: 20px;
+    box-shadow: 20px 10px 40px #c0a797;;
+}
+
+.login-name {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.login-name > h1 {
+    color: #8D493A;
+    font-weight: bold;
+    margin: 0;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.textfield > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #DFD3C3;
+    color: var(--color-text);
+    font: 12pt;
+    box-shadow: 20px 10px 40px #c0a797;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textfield > label {
+    color: #262626;
+    margin-bottom: 10px;
+}
+
+.textfield > input::placeholder {
+    color: #5e5e5ecf;
+}
+
+.need {
+    color: red;
+    padding-left: 1px;
+}
+
+.button-login {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    margin: 25px;
+    padding: 16px 0;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #eeeeeeee;
+    background-color: #8D493A;
+    cursor: pointer;
+    box-shadow: 10px 10px 40px -12px #DFD3C3;
+}
+
+
+@media (max-width:950px) {
+    .card-login {
+        width: 90%;
+    }
+
+    #button {
+        right: 40px;
+    }
+}
+
+@media (max-width:600px) {
+    #main-login {
+        flex-direction: column
+    }
+
+    .svg {
+        width: 50vw;
+    }
+
+    .div-login {
+        width: 100vw;
+        height: 70vh;
+    }
+
+    .card-login {
+        width: 90%;
+    }
+
+    #button {
+        right: 50px;
+    }
+}

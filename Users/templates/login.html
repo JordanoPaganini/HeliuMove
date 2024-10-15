@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+    <script src="{% static 'users/js/login.js' %}" defer></script>
+{% endblock head %}
+    
+
+{% block body %}
+    <div id="main-login">{% csrf_token %}
+        
+        <div class="div-login">
+            <div class="card-login">
+                <div class="login-name">
+                    <h1>LOGIN</h1> 
+                </div>
+                <div class="textfield">
+                    <div class="row">
+                        <label for="usuario">Usuário</label><p class="need">*</p>
+                    </div>
+                    <input type="text" name="username" placeholder="Email">
+                </div>
+                <div class="textfield">
+                    <div class="row">
+                        <label for="usuario">Senha</label><p class="need">*</p>
+                    </div>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <button id='send' onclick="send()" class="button-login">SING IN</button>
+            </div>
+        </div>
+    </div>
+{% endblock body %}    
