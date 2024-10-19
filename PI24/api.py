@@ -13,6 +13,6 @@ class ORJSONRenderer(BaseRenderer):
     def render(self, request, data, *, response_status):
         return orjson.dumps(data)
     
-api = NinjaAPI(version='1.5.0', parser=ORJsonParser(), renderer=ORJSONRenderer())
+api = NinjaAPI(version='1.5.0', parser=ORJsonParser(), renderer=ORJSONRenderer(), docs_url=None)
 
 api.add_router('', 'Sistemas.api.router')
