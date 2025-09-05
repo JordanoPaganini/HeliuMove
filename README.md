@@ -5,8 +5,6 @@
 
 ## Projeto Integrador 2024 - Plataforma Web HeliuMove
 
-Link para acesso a plataforma: https://heliumove.onrender.com/
-
 ---
 
 `Projeto desenvolvido e testado em linguagem Python 3`
